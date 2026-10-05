@@ -57,18 +57,20 @@ document.querySelector("#destinationSearch").addEventListener("input", event => 
   const keyword = event.target.value.trim();
   const results = document.querySelector("#destinationResults");
   document.querySelector("#destinationId").value = "";
-  if (keyword.length < 3) { results.hidden = true; return; }
+  const status = document.querySelector("#shippingResult");
+  if (keyword.length < 3) { results.hidden = true; status.textContent = "Ketik minimal 3 karakter lokasi."; return; }
   destinationTimer = setTimeout(async () => {
-    results.hidden = false; results.innerHTML = '<option value="">Mencari lokasi...</option>';
+    results.hidden = false; results.innerHTML = '<option value="">Mencari lokasi...</option>'; status.textContent = "Mencari lokasi tujuan...";
     try {
       const response = await fetch(`api/destination-search.php?search=${encodeURIComponent(keyword)}`);
       const payload = await response.json();
       if (!response.ok || !payload.data?.length) throw new Error("Lokasi tidak ditemukan");
       results.innerHTML = '<option value="">Pilih lokasi tujuan</option>' + payload.data.map(item => `<option value="${item.id}">${item.label || `${item.subdistrict || ""}, ${item.city || ""}, ${item.province || ""}`}</option>`).join("");
-    } catch (error) { results.innerHTML = `<option value="">${error.message}</option>`; }
+      status.textContent = `${payload.data.length} lokasi ditemukan. Pilih salah satu.`;
+    } catch (error) { results.innerHTML = `<option value="">${error.message}</option>`; status.textContent = "Lokasi belum dapat dimuat. Admin akan membantu konfirmasi ongkir via WhatsApp."; }
   }, 400);
 });
-document.querySelector("#destinationResults").addEventListener("change", event => { document.querySelector("#destinationId").value = event.target.value; });
+document.querySelector("#destinationResults").addEventListener("change", event => { document.querySelector("#destinationId").value = event.target.value; document.querySelector("#shippingResult").textContent = event.target.value ? "Lokasi tujuan dipilih. Klik Hitung ongkir." : "Pilih lokasi tujuan."; });
 document.querySelector("#shippingButton").addEventListener("click", async () => {
   const destination = document.querySelector("#destinationId").value;
   const courier = document.querySelector("#courierSelect").value;
@@ -91,7 +93,7 @@ function closeModal() { document.querySelector("#quickModal").classList.remove("
 document.querySelectorAll(".product-card").forEach(card => { card.dataset.category ||= "unisex"; card.querySelector(".add-button").addEventListener("click", () => addProduct(card)); card.querySelector(".quick-button").addEventListener("click", () => openModal(card)); });
 document.querySelectorAll(".filter-button").forEach(button => button.addEventListener("click", () => { document.querySelectorAll(".filter-button").forEach(item => item.classList.remove("active")); button.classList.add("active"); const filter = button.dataset.filter; document.querySelectorAll(".product-card").forEach(card => { card.hidden = filter !== "all" && !card.dataset.category.split(" ").includes(filter); }); }));
 document.querySelector(".modal-close").addEventListener("click", closeModal); document.querySelector("#quickModal").addEventListener("click", event => { if (event.target.id === "quickModal") closeModal(); });
-document.querySelector("#checkoutButton").addEventListener("click", () => { if (!cart.length) return alert("Silakan pilih produk terlebih dahulu."); const name = document.querySelector("#customerName").value.trim() || "Belum diisi"; const address = document.querySelector("#customerAddress").value.trim() || "Belum diisi"; const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); const total = subtotal + selectedShipping.cost; const items = cart.map(item => `- ${item.name} x${item.quantity} (${formatPrice(item.price * item.quantity)})`).join("%0A"); const message = `Halo Saynna Parfum, saya ingin memesan:%0A%0A${items}%0AOngkir: ${selectedShipping.name} - ${formatPrice(selectedShipping.cost)}%0ATotal: ${formatPrice(total)}%0ANama: ${encodeURIComponent(name)}%0AAlamat: ${encodeURIComponent(address)}`; window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank", "noopener"); });
+document.querySelector("#checkoutButton").addEventListener("click", () => { if (!cart.length) return alert("Silakan pilih produk terlebih dahulu."); const name = document.querySelector("#customerName").value.trim(); const phone = document.querySelector("#customerPhone").value.trim(); const address = document.querySelector("#customerAddress").value.trim(); const postal = document.querySelector("#postalCode").value.trim(); const note = document.querySelector("#deliveryNote").value.trim() || "Tidak ada"; if (!name || !phone || !address || !postal) return alert("Lengkapi nama, nomor WhatsApp, alamat, dan kode pos terlebih dahulu."); if (!selectedShipping.cost) return alert("Hitung ongkir terlebih dahulu. Jika API bermasalah, lanjutkan konfirmasi ongkir melalui WhatsApp."); const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); const total = subtotal + selectedShipping.cost; const items = cart.map(item => `- ${item.name} x${item.quantity} (${formatPrice(item.price * item.quantity)})`).join("%0A"); const message = `Halo Saynna Parfum, saya ingin memesan:%0A%0A${items}%0AOngkir: ${selectedShipping.name} - ${formatPrice(selectedShipping.cost)}%0AEstimasi: ${encodeURIComponent(selectedShipping.etd || "Konfirmasi admin")}%0ATotal: ${formatPrice(total)}%0A%0ANama: ${encodeURIComponent(name)}%0AWhatsApp: ${encodeURIComponent(phone)}%0AAlamat: ${encodeURIComponent(address)}%0AKode Pos: ${encodeURIComponent(postal)}%0ACatatan: ${encodeURIComponent(note)}`; window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank", "noopener"); });
 const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: .12 }); document.querySelectorAll(".reveal-card").forEach(card => observer.observe(card));
 if (window.gsap && window.ScrollTrigger && window.matchMedia("(max-width: 768px)").matches) {
   gsap.utils.toArray(".product-card").forEach((card, index) => {

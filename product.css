@@ -41,6 +41,9 @@
 .shipping-button { width: 100%; margin-top: .8rem; padding: .7rem; border: 1px solid #6e5334; background: transparent; color: #d6a64d; cursor: pointer; }
 .shipping-button:hover { background: #d6a64d; color: #17100d; }
 .shipping-result { margin-top: .7rem; padding: .7rem; border: 1px solid #3d3027; color: #b9d99d; font-size: .75rem; line-height: 1.4; }
+.package-info { margin-top: .8rem; padding: .65rem; background: #1b1411; color: #cfc2b1; font-size: .75rem; }
+.package-info strong { color: var(--sienna); }
+.order-panel small { color: #cfc2b1; }
 .checkout-button { width: 100%; margin-top: 1.2rem; }
 .order-note { display: block; color: #88786c; font-size: .7rem; line-height: 1.4; margin-top: .8rem; }
 .reveal-card { opacity: 0; transform: translateY(24px); }
