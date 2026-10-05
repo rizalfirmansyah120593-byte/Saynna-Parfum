@@ -2,13 +2,13 @@ const cart = [];
 const whatsappNumber = "6281293161515";
 const formatPrice = value => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
 const extraProducts = [
-  ["Saynna Noir", 299000, "woody", "image.png", "Woody amber yang misterius untuk malam yang berkarakter."],
-  ["Golden Jasmine", 279000, "floral", "detail-1.jpeg", "Jasmine luminous dengan sentuhan saffron yang elegan."],
-  ["Cedar Mist", 259000, "woody", "detail-2.jpeg", "Cedar dan fir resin yang tenang, bersih, dan sophisticated."],
-  ["Morning Veil", 239000, "fresh", "image.png", "Fresh floral ringan untuk rutinitas pagi yang effortless."],
-  ["Amber Bloom", 319000, "unisex", "detail-1.jpeg", "Amber floral modern dengan jejak hangat yang tahan lama."],
-  ["Saynna Mini Duo", 189000, "unisex", "detail-2.jpeg", "Dua aroma signature Saynna dalam ukuran travel-friendly."],
-  ["Velvet Saffron", 389000, "floral", "image.png", "Saffron spicy dan amberwood dalam komposisi yang sensual."]
+  ["Saynna Noir", 60000, "woody", "image.png", "Woody amber yang misterius untuk malam yang berkarakter."],
+  ["Golden Jasmine", 60000, "floral", "detail-1.jpeg", "Jasmine luminous dengan sentuhan saffron yang elegan."],
+  ["Cedar Mist", 60000, "woody", "detail-2.jpeg", "Cedar dan fir resin yang tenang, bersih, dan sophisticated."],
+  ["Morning Veil", 60000, "fresh", "image.png", "Fresh floral ringan untuk rutinitas pagi yang effortless."],
+  ["Amber Bloom", 60000, "unisex", "detail-1.jpeg", "Amber floral modern dengan jejak hangat yang tahan lama."],
+  ["Saynna Mini Duo", 60000, "unisex", "detail-2.jpeg", "Dua aroma signature Saynna dalam ukuran travel-friendly."],
+  ["Velvet Saffron", 60000, "floral", "image.png", "Saffron spicy dan amberwood dalam komposisi yang sensual."]
 ];
 
 function createProductCard([name, price, category, image, description]) {
