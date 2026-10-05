@@ -95,10 +95,10 @@ header::after {
 }
 
 .header-logo-image {
-  width: 84px !important;
-  height: 84px !important;
-  max-width: 84px !important;
-  max-height: 84px !important;
+  width: 110px !important;
+  height: 110px !important;
+  max-width: 110px !important;
+  max-height: 110px !important;
   object-fit: contain;
   display: block;
   filter: saturate(.85) brightness(1.05);
@@ -222,7 +222,7 @@ main {
 /* === Responsive Sidebar Behavior for Mobile === */
 @media (max-width: 768px) {
   .logo { font-size: 1.55rem; gap: .4rem; }
-  .header-logo-image { width: 72px !important; height: 72px !important; max-width: 72px !important; max-height: 72px !important; }
+  .header-logo-image { width: 90px !important; height: 90px !important; max-width: 90px !important; max-height: 90px !important; }
   main {
     padding-left: 0;
   }
