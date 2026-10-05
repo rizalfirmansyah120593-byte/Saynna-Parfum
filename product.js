@@ -1,5 +1,5 @@
 const cart = [];
-const whatsappNumber = "6281293161515";
+const whatsappNumber = "6282298988772";
 const whatsappWidget = document.querySelector(".whatsapp-widget");
 if (whatsappWidget) {
   whatsappWidget.querySelector(".floating-whatsapp").addEventListener("click", () => whatsappWidget.classList.toggle("is-open"));
