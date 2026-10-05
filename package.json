@@ -1,0 +1,27 @@
+{
+  "name": "saynna-parfum",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium Saynna Parfum website with GSAP ScrollTrigger storytelling, product catalog, and WhatsApp checkout.",
+  "keywords": [
+    "saynna-parfum",
+    "perfume-website",
+    "gsap",
+    "scrolltrigger",
+    "ecommerce-landing-page"
+  ],
+  "author": "Rizal Firmansyah",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rizalfirmansyah120593-byte/Saynna-Parfum.git"
+  },
+  "homepage": "https://github.com/rizalfirmansyah120593-byte/Saynna-Parfum",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server ."
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
