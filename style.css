@@ -59,7 +59,7 @@ header::after {
 .header-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1.2rem 2rem;
+  padding: .4rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,10 +95,10 @@ header::after {
 }
 
 .header-logo-image {
-  width: 72px !important;
-  height: 72px !important;
-  max-width: 72px !important;
-  max-height: 72px !important;
+  width: 84px !important;
+  height: 84px !important;
+  max-width: 84px !important;
+  max-height: 84px !important;
   object-fit: contain;
   display: block;
   filter: saturate(.85) brightness(1.05);
@@ -222,7 +222,7 @@ main {
 /* === Responsive Sidebar Behavior for Mobile === */
 @media (max-width: 768px) {
   .logo { font-size: 1.55rem; gap: .4rem; }
-  .header-logo-image { width: 52px !important; height: 52px !important; max-width: 52px !important; max-height: 52px !important; }
+  .header-logo-image { width: 72px !important; height: 72px !important; max-width: 72px !important; max-height: 72px !important; }
   main {
     padding-left: 0;
   }
@@ -322,8 +322,8 @@ footer {
 .testimonials-heading { max-width: 1280px; margin: 0 auto 2rem; padding: 0 2rem; }
 .testimonials-heading h2 { margin-top: .6rem; color: #fff; font: 400 clamp(2.5rem, 5vw, 4.5rem)/.9 "Veneer", serif; text-transform: uppercase; }
 .testimonial-marquee { overflow: hidden; width: 100%; margin: 1rem 0; }
-.testimonial-track { display: flex; width: max-content; gap: 1rem; }
-.testimonial-marquee blockquote { width: 270px; min-height: 92px; margin: 0; padding: 1.1rem; border: 1px solid #4c392a; background: #201713; color: #f4ead7; font-size: .82rem; line-height: 1.5; }
+.testimonial-track { display: flex !important; flex-direction: row; align-items: stretch; width: max-content; gap: 1rem; will-change: transform; }
+.testimonial-marquee blockquote { flex: 0 0 270px; width: 270px; min-height: 92px; margin: 0; padding: 1.1rem; border: 1px solid #4c392a; border-radius: 2px; background: linear-gradient(145deg, #271b16, #17100e); color: #f4ead7; font-size: .82rem; line-height: 1.5; box-shadow: 0 8px 20px #0004; }
 .testimonial-marquee cite { display: block; margin-top: .7rem; color: var(--sienna); font-size: .7rem; font-style: normal; letter-spacing: .04em; }
 .marquee-forward .testimonial-track { animation: testimonial-forward 75s linear infinite; }
 .marquee-reverse .testimonial-track { animation: testimonial-reverse 75s linear infinite; }
@@ -339,7 +339,7 @@ footer {
   .footer-bottom { flex-direction: column; margin-top: 2rem; }
   .testimonials-section { padding: 3.5rem 0 2.5rem; }
   .testimonials-heading { padding: 0 1.25rem; }
-  .testimonial-marquee blockquote { width: 230px; min-height: 100px; font-size: .76rem; }
+  .testimonial-marquee blockquote { flex-basis: 230px; width: 230px; min-height: 100px; font-size: .76rem; }
 }
 
 /* Mobile readability and touch targets */
