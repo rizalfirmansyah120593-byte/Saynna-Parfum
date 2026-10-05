@@ -51,6 +51,24 @@ function renderCart() {
   target.querySelectorAll("[data-remove]").forEach(button => button.addEventListener("click", () => { cart.splice(Number(button.dataset.remove), 1); renderCart(); }));
 }
 function addProduct(card) { const existing = cart.find(item => item.name === card.dataset.name); if (existing) existing.quantity += 1; else cart.push({ name: card.dataset.name, price: Number(card.dataset.price), quantity: 1 }); renderCart(); }
+let destinationTimer;
+document.querySelector("#destinationSearch").addEventListener("input", event => {
+  clearTimeout(destinationTimer);
+  const keyword = event.target.value.trim();
+  const results = document.querySelector("#destinationResults");
+  document.querySelector("#destinationId").value = "";
+  if (keyword.length < 3) { results.hidden = true; return; }
+  destinationTimer = setTimeout(async () => {
+    results.hidden = false; results.innerHTML = '<option value="">Mencari lokasi...</option>';
+    try {
+      const response = await fetch(`api/destination-search.php?search=${encodeURIComponent(keyword)}`);
+      const payload = await response.json();
+      if (!response.ok || !payload.data?.length) throw new Error("Lokasi tidak ditemukan");
+      results.innerHTML = '<option value="">Pilih lokasi tujuan</option>' + payload.data.map(item => `<option value="${item.id}">${item.label || `${item.subdistrict || ""}, ${item.city || ""}, ${item.province || ""}`}</option>`).join("");
+    } catch (error) { results.innerHTML = `<option value="">${error.message}</option>`; }
+  }, 400);
+});
+document.querySelector("#destinationResults").addEventListener("change", event => { document.querySelector("#destinationId").value = event.target.value; });
 document.querySelector("#shippingButton").addEventListener("click", async () => {
   const destination = document.querySelector("#destinationId").value;
   const courier = document.querySelector("#courierSelect").value;
