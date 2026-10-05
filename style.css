@@ -59,7 +59,8 @@ header::after {
 .header-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: .4rem 2rem;
+  height: 100px;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,10 +96,10 @@ header::after {
 }
 
 .header-logo-image {
-  width: 150px !important;
-  height: 150px !important;
-  max-width: 150px !important;
-  max-height: 150px !important;
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100px !important;
+  max-height: 100px !important;
   object-fit: contain;
   display: block;
   filter: saturate(.85) brightness(1.05);
@@ -222,7 +223,7 @@ main {
 /* === Responsive Sidebar Behavior for Mobile === */
 @media (max-width: 768px) {
   .logo { font-size: 1.55rem; gap: .4rem; }
-  .header-logo-image { width: 125px !important; height: 125px !important; max-width: 125px !important; max-height: 125px !important; }
+  .header-logo-image { width: 84px !important; height: 84px !important; max-width: 84px !important; max-height: 84px !important; }
   main {
     padding-left: 0;
   }
@@ -349,7 +350,7 @@ footer {
 /* Mobile readability and touch targets */
 @media (max-width: 768px) {
   header { position: sticky; top: 0; z-index: 9999; }
-  .header-inner { min-height: 70px; padding: .5rem 1rem; }
+  .header-inner { height: 84px; min-height: 84px; padding: 0 1rem; }
   .logo { min-width: 52px; }
   .desktop-nav { display: none !important; }
   .hamburger { display: flex !important; width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: .5rem; z-index: 2; }
