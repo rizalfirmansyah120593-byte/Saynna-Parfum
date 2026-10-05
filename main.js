@@ -17,6 +17,12 @@ window.addEventListener("DOMContentLoaded", () => {
   // Expose function globally to use in inline HTML
   window.toggleMobileNav = toggleMobileNav;
 
+  const whatsappWidget = document.querySelector(".whatsapp-widget");
+  if (whatsappWidget) {
+    whatsappWidget.querySelector(".floating-whatsapp").addEventListener("click", () => whatsappWidget.classList.toggle("is-open"));
+    whatsappWidget.querySelector(".whatsapp-close").addEventListener("click", () => whatsappWidget.classList.remove("is-open"));
+  }
+
   // ==========================
   // Initial Page Load Animations
   // ==========================

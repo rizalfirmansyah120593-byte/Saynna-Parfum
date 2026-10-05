@@ -320,8 +320,15 @@ footer {
   background: #100c0b;
   border-top: 1px solid #4b382a;
 }
-.floating-whatsapp { position: fixed; top: 50%; right: 1.5rem; z-index: 9900; display: flex; align-items: center; gap: .5rem; transform: translateY(-50%); border: 1px solid #b7d7a8; background: #17351b; color: #d8f2ca; padding: .75rem 1rem; text-decoration: none; font-weight: 700; box-shadow: 0 8px 25px #0008; }
+.whatsapp-widget { position: fixed; top: 50%; right: 1.5rem; z-index: 9900; transform: translateY(-50%); }
+.floating-whatsapp { position: relative; display: flex; align-items: center; gap: .5rem; border: 1px solid #b7d7a8; background: #17351b; color: #d8f2ca; padding: .75rem 1rem; text-decoration: none; font-weight: 700; box-shadow: 0 8px 25px #0008; cursor: pointer; }
 .floating-whatsapp:hover { background: #b7d7a8; color: #172016; }
+.whatsapp-popup { position: absolute; right: 0; bottom: calc(100% + .75rem); width: 280px; padding: 1.25rem; border: 1px solid #b7d7a8; background: #172016; color: #fff; box-shadow: 0 12px 30px #0009; opacity: 0; visibility: hidden; transform: translateY(10px); transition: .25s ease; }
+.whatsapp-widget.is-open .whatsapp-popup { opacity: 1; visibility: visible; transform: translateY(0); }
+.whatsapp-popup strong { display: block; padding-right: 1rem; line-height: 1.35; }
+.whatsapp-popup p { color: #d8f2ca; font-size: .8rem; line-height: 1.5; margin: .6rem 0 1rem; }
+.whatsapp-popup a { display: block; padding: .7rem; background: #b7d7a8; color: #172016; text-align: center; text-decoration: none; font-weight: 700; font-size: .8rem; }
+.whatsapp-close { position: absolute; top: .35rem; right: .5rem; border: 0; background: none; color: #fff; font-size: 1.3rem; cursor: pointer; }
 .testimonials-heading { max-width: 1280px; margin: 0 auto 2rem; padding: 0 2rem; }
 .testimonials-heading h2 { margin-top: .6rem; color: #fff; font: 400 clamp(2.5rem, 5vw, 4.5rem)/.9 "Veneer", serif; text-transform: uppercase; }
 .testimonial-marquee { overflow: hidden; width: 100%; margin: 1rem 0; }
@@ -344,7 +351,8 @@ footer {
   .footer-links, .footer-contact { gap: .2rem; }
   .footer-links a, .footer-contact a { min-height: 30px; font-size: .65rem; line-height: 1.2; }
   .footer-bottom { flex-direction: column; margin-top: 2rem; }
-  .floating-whatsapp { right: .75rem; min-width: 48px; min-height: 48px; justify-content: center; border-radius: 50%; padding: .7rem; }
+  .whatsapp-widget { right: .75rem; }
+  .floating-whatsapp { min-width: 48px; min-height: 48px; justify-content: center; border-radius: 50%; padding: .7rem; }
   .floating-whatsapp span { display: none; }
   .testimonials-section { padding: 3.5rem 0 2.5rem; }
   .testimonials-heading { padding: 0 1.25rem; }
