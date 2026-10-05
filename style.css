@@ -95,8 +95,10 @@ header::after {
 }
 
 .header-logo-image {
-  width: 178px;
-  height: 76px;
+  width: 178px !important;
+  height: 76px !important;
+  max-width: 178px !important;
+  max-height: 76px !important;
   object-fit: contain;
   display: block;
   filter: saturate(.85) brightness(1.05);
