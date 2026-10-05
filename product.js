@@ -20,17 +20,17 @@ document.querySelectorAll(".video-card video").forEach(video => videoObserver.ob
 document.querySelectorAll("a[href$='.html'], a[href^='index.html']").forEach(link => link.addEventListener("click", event => { const url = link.href; if (!url.includes("#") && new URL(url).origin === location.origin) { event.preventDefault(); const curtain = document.querySelector(".page-transition"); gsap.to(curtain, { scaleY: 1, duration: .35, ease: "power2.in", onComplete: () => location.href = url }); } }));
 const formatPrice = value => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
 const extraProducts = [
-  ["DBL Icon", 60000, "woody", "product-4.jpeg", "Bold modern scent dengan bergamot, lemon, jasmine, violet, cedarwood, amber, dan vanilla."],
-  ["Night Passion", 60000, "floral", "product-5.jpeg", "Aroma sensual peach, bergamot, jasmine, rose, lily, vanilla, amber, dan musk."],
-  ["Royal Honey", 60000, "floral", "product-6.jpeg", "Sweet warm fragrance dengan honey, peach, bergamot, jasmine, wild rose, vanilla, amber, dan musk."],
-  ["Scandalous Secret", 60000, "floral", "product-7.jpeg", "Floral woody dengan jasmine, bergamot, peach, rose, lily, ylang ylang, vanilla, amber, dan sandalwood."],
-  ["Dark Rebel", 60000, "woody", "product-8.jpeg", "Karakter smoky woody dari bergamot, black pepper, lavender, geranium, sage, cedarwood, amber, dan musk."],
-  ["Honey Scandal", 60000, "floral", "product-9.jpeg", "Aroma honey, jasmine, bergamot, rose, lily, white floral, amber, sandalwood, dan musk."],
-  ["Predator Sport", 60000, "fresh unisex", "product-10.jpeg", "Fresh masculine scent dengan bergamot, lemon, black pepper, lavender, geranium, oud wood, amber, dan vanilla."],
-  ["Classic Black", 60000, "woody unisex", "product-11.jpeg", "Aroma clean woody dengan bergamot, lemon, black pepper, lavender, geranium, cedarwood, patchouli, amber, dan musk."],
-  ["Velvet Ispahan", 60000, "floral", "product-12.jpeg", "Rose dan jasmine yang mewah dengan pink pepper, oud wood, vanilla, dan karakter floral yang intens."],
-  ["Signature Black", 60000, "woody unisex", "product-13.jpeg", "Komposisi modern coffee, pear, pink pepper, jasmine, bitter almond, vanilla, patchouli, cedarwood, dan cashmere wood."],
-  ["Note Baccarat 540", 60000, "floral woody unisex", "product-14.jpeg", "Signature amber floral dengan saffron, jasmine, amberwood, ambergris, fir resin, dan cedar." ]
+  ["DBL Icon", 63000, "woody", "product-4.jpeg", "Bold modern scent dengan bergamot, lemon, jasmine, violet, cedarwood, amber, dan vanilla."],
+  ["Night Passion", 63000, "floral", "product-5.jpeg", "Aroma sensual peach, bergamot, jasmine, rose, lily, vanilla, amber, dan musk."],
+  ["Royal Honey", 63000, "floral", "product-6.jpeg", "Sweet warm fragrance dengan honey, peach, bergamot, jasmine, wild rose, vanilla, amber, dan musk."],
+  ["Scandalous Secret", 63000, "floral", "product-7.jpeg", "Floral woody dengan jasmine, bergamot, peach, rose, lily, ylang ylang, vanilla, amber, dan sandalwood."],
+  ["Dark Rebel", 63000, "woody", "product-8.jpeg", "Karakter smoky woody dari bergamot, black pepper, lavender, geranium, sage, cedarwood, amber, dan musk."],
+  ["Honey Scandal", 63000, "floral", "product-9.jpeg", "Aroma honey, jasmine, bergamot, rose, lily, white floral, amber, sandalwood, dan musk."],
+  ["Predator Sport", 63000, "fresh unisex", "product-10.jpeg", "Fresh masculine scent dengan bergamot, lemon, black pepper, lavender, geranium, oud wood, amber, dan vanilla."],
+  ["Classic Black", 63000, "woody unisex", "product-11.jpeg", "Aroma clean woody dengan bergamot, lemon, black pepper, lavender, geranium, cedarwood, patchouli, amber, dan musk."],
+  ["Velvet Ispahan", 63000, "floral", "product-12.jpeg", "Rose dan jasmine yang mewah dengan pink pepper, oud wood, vanilla, dan karakter floral yang intens."],
+  ["Signature Black", 63000, "woody unisex", "product-13.jpeg", "Komposisi modern coffee, pear, pink pepper, jasmine, bitter almond, vanilla, patchouli, cedarwood, dan cashmere wood."],
+  ["Note Baccarat 540", 63000, "floral woody unisex", "product-14.jpeg", "Signature amber floral dengan saffron, jasmine, amberwood, ambergris, fir resin, dan cedar." ]
 ];
 
 if (window.gsap && window.ScrollTrigger) {
@@ -49,6 +49,7 @@ function createProductCard([name, price, category, image, description]) {
   document.querySelector(".product-grid").appendChild(card);
 }
 extraProducts.forEach(createProductCard);
+document.querySelectorAll(".product-card").forEach(card => { const price = card.querySelector(".product-buy strong"); if (price) price.textContent = formatPrice(Number(card.dataset.price)); });
 
 function renderCart() {
   const target = document.querySelector("#orderItems");
