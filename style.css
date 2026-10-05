@@ -94,6 +94,14 @@ header::after {
   filter: saturate(.8);
 }
 
+.header-logo-image {
+  width: 178px;
+  height: 76px;
+  object-fit: contain;
+  display: block;
+  filter: saturate(.85) brightness(1.05);
+}
+
 /* Desktop Nav Menu */
 nav {
   display: flex;
@@ -212,7 +220,7 @@ main {
 /* === Responsive Sidebar Behavior for Mobile === */
 @media (max-width: 768px) {
   .logo { font-size: 1.55rem; gap: .4rem; }
-  .header-mark { width: 26px; height: 26px; }
+  .header-logo-image { width: 132px; height: 62px; }
   main {
     padding-left: 0;
   }
