@@ -12,13 +12,13 @@ window.addEventListener("pointermove", event => { document.body.style.setPropert
 document.querySelectorAll("a[href$='.html'], a[href^='index.html']").forEach(link => link.addEventListener("click", event => { const url = link.href; if (!url.includes("#") && new URL(url).origin === location.origin) { event.preventDefault(); const curtain = document.querySelector(".page-transition"); gsap.to(curtain, { scaleY: 1, duration: .35, ease: "power2.in", onComplete: () => location.href = url }); } }));
 const formatPrice = value => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
 const extraProducts = [
-  ["Saynna Noir", 60000, "woody", "image.png", "Woody amber yang misterius untuk malam yang berkarakter."],
-  ["Golden Jasmine", 60000, "floral", "detail-1.jpeg", "Jasmine luminous dengan sentuhan saffron yang elegan."],
-  ["Cedar Mist", 60000, "woody", "detail-2.jpeg", "Cedar dan fir resin yang tenang, bersih, dan sophisticated."],
-  ["Morning Veil", 60000, "fresh", "image.png", "Fresh floral ringan untuk rutinitas pagi yang effortless."],
-  ["Amber Bloom", 60000, "unisex", "detail-1.jpeg", "Amber floral modern dengan jejak hangat yang tahan lama."],
-  ["Saynna Mini Duo", 60000, "unisex", "detail-2.jpeg", "Dua aroma signature Saynna dalam ukuran travel-friendly."],
-  ["Velvet Saffron", 60000, "floral", "image.png", "Saffron spicy dan amberwood dalam komposisi yang sensual."]
+  ["DBL Icon", 60000, "woody", "product-4.jpeg", "Bold modern scent dengan bergamot, lemon, jasmine, violet, cedarwood, amber, dan vanilla."],
+  ["Night Passion", 60000, "floral", "product-5.jpeg", "Aroma sensual peach, bergamot, jasmine, rose, lily, vanilla, amber, dan musk."],
+  ["Royal Honey", 60000, "floral", "product-6.jpeg", "Sweet warm fragrance dengan honey, peach, bergamot, jasmine, wild rose, vanilla, amber, dan musk."],
+  ["Scandalous Secret", 60000, "floral", "product-7.jpeg", "Floral woody dengan jasmine, bergamot, peach, rose, lily, ylang ylang, vanilla, amber, dan sandalwood."],
+  ["Dark Rebel", 60000, "woody", "product-8.jpeg", "Karakter smoky woody dari bergamot, black pepper, lavender, geranium, sage, cedarwood, amber, dan musk."],
+  ["Honey Scandal", 60000, "floral", "product-9.jpeg", "Aroma honey, jasmine, bergamot, rose, lily, white floral, amber, sandalwood, dan musk."],
+  ["Predator Sport", 60000, "fresh", "product-10.jpeg", "Fresh masculine scent dengan bergamot, lemon, black pepper, lavender, geranium, oud wood, amber, dan vanilla."]
 ];
 
 if (window.gsap && window.ScrollTrigger) {
