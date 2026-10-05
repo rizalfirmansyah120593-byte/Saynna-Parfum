@@ -218,12 +218,40 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       },
 
-      // Mobile fallback animation (no scroll-based logic)
+      // Mobile scroll animation (lightweight for smaller viewports)
       "(max-width: 768px)": function () {
         gsap.to(".hero-bottle-wrapper", {
           opacity: 1,
           duration: 1,
           delay: 0.5,
+        });
+
+        // Lightweight mobile scroll experience: the bottle and hero copy
+        // respond to the user's scroll without pinning the small viewport.
+        gsap.to(".hero-bottle", {
+          y: "18%",
+          rotate: 0,
+          scale: 0.82,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        gsap.to(".hero-content", {
+          y: "-12%",
+          opacity: 0.45,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
         });
       },
     });

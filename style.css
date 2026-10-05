@@ -95,10 +95,10 @@ header::after {
 }
 
 .header-logo-image {
-  width: 178px !important;
-  height: 76px !important;
-  max-width: 178px !important;
-  max-height: 76px !important;
+  width: 72px !important;
+  height: 72px !important;
+  max-width: 72px !important;
+  max-height: 72px !important;
   object-fit: contain;
   display: block;
   filter: saturate(.85) brightness(1.05);
@@ -222,7 +222,7 @@ main {
 /* === Responsive Sidebar Behavior for Mobile === */
 @media (max-width: 768px) {
   .logo { font-size: 1.55rem; gap: .4rem; }
-  .header-logo-image { width: 132px; height: 62px; }
+  .header-logo-image { width: 52px !important; height: 52px !important; max-width: 52px !important; max-height: 52px !important; }
   main {
     padding-left: 0;
   }
@@ -254,16 +254,16 @@ main {
 footer {
   background: #000000;
   color: var(--white);
-  padding: 3.5rem 2rem 1.25rem;
+  padding: 3rem 2rem 1.25rem;
   min-height: 0;
 }
 
 .footer-inner {
   max-width: 1280px;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  align-items: start;
   gap: 2rem;
 }
 
@@ -314,6 +314,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .hero-bottle-wrapper { height: 19rem; }
+  footer { padding: 2.5rem 1.25rem 1rem; }
+  .footer-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1.75rem; }
+  .footer-brand { align-items: center; }
   .footer-bottom { flex-direction: column; margin-top: 2rem; }
 }
 
@@ -375,7 +379,7 @@ footer {
   position: absolute;
   left: 0;
   top: 0;
-  height: 38rem;
+  height: 32rem;
   width: 100%;
   z-index: 4;
   opacity: 0;
