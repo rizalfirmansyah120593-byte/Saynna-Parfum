@@ -332,7 +332,7 @@ footer {
 @keyframes testimonial-reverse { from { transform: translateX(0); } to { transform: translateX(-42%); } }
 
 @media (max-width: 768px) {
-  .hero-bottle-wrapper { height: 19rem; }
+  .hero-bottle-wrapper { height: 15rem; }
   footer { padding: 2.5rem 1.25rem 1rem; }
   .footer-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1.75rem; }
   .footer-brand { align-items: center; }
