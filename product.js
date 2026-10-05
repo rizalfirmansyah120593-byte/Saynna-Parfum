@@ -50,4 +50,8 @@ if (window.gsap && window.ScrollTrigger && window.matchMedia("(max-width: 768px)
   });
   ScrollTrigger.refresh();
 }
+document.querySelectorAll(".product-card").forEach(card => {
+  card.style.opacity = "1";
+  card.style.visibility = "visible";
+});
 renderCart();

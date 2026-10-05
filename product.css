@@ -70,4 +70,6 @@
   .order-panel { padding: 1.15rem; }
   .order-panel input, .order-panel textarea { font-size: 16px; color: #fff; }
   .floating-whatsapp { right: 1rem; bottom: 1rem; min-width: 48px; min-height: 48px; justify-content: center; border-radius: 50%; padding: .7rem; }
+  /* Fallback: mobile browsers must never leave product cards invisible. */
+  .product-card.reveal-card { opacity: 1; transform: none; }
 }
