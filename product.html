@@ -99,6 +99,12 @@
         <input id="customerName" type="text" placeholder="Nama lengkap">
         <label for="customerAddress">Alamat pengiriman</label>
         <textarea id="customerAddress" rows="3" placeholder="Alamat lengkap"></textarea>
+        <label for="destinationId">ID tujuan Komerce</label>
+        <input id="destinationId" type="number" placeholder="Contoh: 12345">
+        <label for="courierSelect">Kurir</label>
+        <select id="courierSelect"><option value="jne,jnt">JNE + J&T</option><option value="jne">JNE</option><option value="jnt">J&T</option><option value="sicepat">SiCepat</option></select>
+        <button class="shipping-button" id="shippingButton" type="button">Hitung ongkir</button>
+        <div class="shipping-result" id="shippingResult">Masukkan ID tujuan untuk menghitung ongkir.</div>
         <button class="checkout-button" id="checkoutButton" type="button">Checkout via WhatsApp</button>
         <small class="order-note">Pesanan akan dibuka di WhatsApp untuk dikonfirmasi sebelum pembayaran.</small>
       </aside>

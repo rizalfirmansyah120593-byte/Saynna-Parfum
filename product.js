@@ -1,4 +1,5 @@
 const cart = [];
+let selectedShipping = { name: "Belum dipilih", cost: 0, etd: "" };
 const whatsappNumber = "6282298988772";
 const whatsappWidget = document.querySelector(".whatsapp-widget");
 if (whatsappWidget) {
@@ -45,18 +46,34 @@ extraProducts.forEach(createProductCard);
 function renderCart() {
   const target = document.querySelector("#orderItems");
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  document.querySelector("#orderTotal").textContent = formatPrice(total);
+  document.querySelector("#orderTotal").textContent = formatPrice(total + selectedShipping.cost);
   target.innerHTML = cart.length ? cart.map((item, index) => `<div class="order-line"><span>${item.name} × ${item.quantity}<br><small>${formatPrice(item.price * item.quantity)}</small></span><button type="button" data-remove="${index}">Hapus</button></div>`).join("") : '<p class="empty-order">Belum ada produk. Pilih parfum untuk mulai berbelanja.</p>';
   target.querySelectorAll("[data-remove]").forEach(button => button.addEventListener("click", () => { cart.splice(Number(button.dataset.remove), 1); renderCart(); }));
 }
 function addProduct(card) { const existing = cart.find(item => item.name === card.dataset.name); if (existing) existing.quantity += 1; else cart.push({ name: card.dataset.name, price: Number(card.dataset.price), quantity: 1 }); renderCart(); }
+document.querySelector("#shippingButton").addEventListener("click", async () => {
+  const destination = document.querySelector("#destinationId").value;
+  const courier = document.querySelector("#courierSelect").value;
+  const result = document.querySelector("#shippingResult");
+  if (!destination) { result.textContent = "Masukkan ID tujuan Komerce terlebih dahulu."; return; }
+  result.textContent = "Mengambil tarif ongkir...";
+  try {
+    const response = await fetch(`api/shipping-cost.php?destination=${encodeURIComponent(destination)}&weight=300&courier=${encodeURIComponent(courier)}`);
+    const payload = await response.json();
+    if (!response.ok || !payload.data?.length) throw new Error(payload.error || "Tarif tidak tersedia");
+    const option = payload.data[0];
+    selectedShipping = { name: `${option.name} ${option.service}`, cost: Number(option.cost), etd: option.etd || "" };
+    result.textContent = `${selectedShipping.name}: ${formatPrice(selectedShipping.cost)}${selectedShipping.etd ? ` · ETD ${selectedShipping.etd}` : ""}`;
+    renderCart();
+  } catch (error) { result.textContent = error.message || "Gagal mengambil tarif ongkir."; }
+});
 function openModal(card) { document.querySelector("#modalImage").src = card.dataset.image; document.querySelector("#modalTitle").textContent = card.dataset.name; document.querySelector("#modalDescription").textContent = card.dataset.description; document.querySelector("#quickModal").classList.add("is-open"); document.querySelector("#quickModal").setAttribute("aria-hidden", "false"); document.querySelector(".modal-add").onclick = () => { addProduct(card); closeModal(); }; }
 function closeModal() { document.querySelector("#quickModal").classList.remove("is-open"); document.querySelector("#quickModal").setAttribute("aria-hidden", "true"); }
 
 document.querySelectorAll(".product-card").forEach(card => { card.dataset.category ||= "unisex"; card.querySelector(".add-button").addEventListener("click", () => addProduct(card)); card.querySelector(".quick-button").addEventListener("click", () => openModal(card)); });
 document.querySelectorAll(".filter-button").forEach(button => button.addEventListener("click", () => { document.querySelectorAll(".filter-button").forEach(item => item.classList.remove("active")); button.classList.add("active"); const filter = button.dataset.filter; document.querySelectorAll(".product-card").forEach(card => { card.hidden = filter !== "all" && !card.dataset.category.split(" ").includes(filter); }); }));
 document.querySelector(".modal-close").addEventListener("click", closeModal); document.querySelector("#quickModal").addEventListener("click", event => { if (event.target.id === "quickModal") closeModal(); });
-document.querySelector("#checkoutButton").addEventListener("click", () => { if (!cart.length) return alert("Silakan pilih produk terlebih dahulu."); const name = document.querySelector("#customerName").value.trim() || "Belum diisi"; const address = document.querySelector("#customerAddress").value.trim() || "Belum diisi"; const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); const items = cart.map(item => `- ${item.name} x${item.quantity} (${formatPrice(item.price * item.quantity)})`).join("%0A"); const message = `Halo Saynna Parfum, saya ingin memesan:%0A%0A${items}%0A%0ATotal: ${formatPrice(total)}%0ANama: ${encodeURIComponent(name)}%0AAlamat: ${encodeURIComponent(address)}`; window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank", "noopener"); });
+document.querySelector("#checkoutButton").addEventListener("click", () => { if (!cart.length) return alert("Silakan pilih produk terlebih dahulu."); const name = document.querySelector("#customerName").value.trim() || "Belum diisi"; const address = document.querySelector("#customerAddress").value.trim() || "Belum diisi"; const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); const total = subtotal + selectedShipping.cost; const items = cart.map(item => `- ${item.name} x${item.quantity} (${formatPrice(item.price * item.quantity)})`).join("%0A"); const message = `Halo Saynna Parfum, saya ingin memesan:%0A%0A${items}%0AOngkir: ${selectedShipping.name} - ${formatPrice(selectedShipping.cost)}%0ATotal: ${formatPrice(total)}%0ANama: ${encodeURIComponent(name)}%0AAlamat: ${encodeURIComponent(address)}`; window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank", "noopener"); });
 const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: .12 }); document.querySelectorAll(".reveal-card").forEach(card => observer.observe(card));
 if (window.gsap && window.ScrollTrigger && window.matchMedia("(max-width: 768px)").matches) {
   gsap.utils.toArray(".product-card").forEach((card, index) => {
