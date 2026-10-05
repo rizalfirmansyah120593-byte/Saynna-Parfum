@@ -33,7 +33,12 @@ body {
   background-color: var(--papaya-whip);
   color: var(--black);
   scroll-behavior: smooth;
+  --pointer-x: 50vw;
+  --pointer-y: 50vh;
 }
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 8; background: radial-gradient(circle 180px at var(--pointer-x) var(--pointer-y), rgba(214,166,77,.09), transparent 70%); }
+.scroll-progress { position: fixed; top: 0; left: 0; width: 0; height: 3px; z-index: 10001; background: linear-gradient(90deg, #b87928, #f0c66e, #fff0ae); box-shadow: 0 0 12px #d6a64d; }
+.page-transition { position: fixed; inset: 0; z-index: 10000; pointer-events: none; background: #0d0908; transform: scaleY(0); transform-origin: bottom; }
 
 /* === Header Bar === */
 header {
@@ -411,6 +416,13 @@ footer {
   overflow: hidden;
   background: radial-gradient(circle at 50% 35%, #3a2921 0%, var(--papaya-whip) 58%, #0d0a09 100%);
 }
+.hero::before, .hero::after { content: ""; position: absolute; border: 1px solid rgba(214,166,77,.22); border-radius: 50%; pointer-events: none; }
+.hero::before { width: 32rem; height: 32rem; animation: scent-wave 8s ease-in-out infinite; }
+.hero::after { width: 48rem; height: 48rem; animation: scent-wave 11s ease-in-out infinite reverse; }
+.scent-particle { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #d6a64d; box-shadow: 0 0 18px #d6a64d; opacity: .5; animation: scent-float 7s ease-in-out infinite; z-index: 2; }
+.particle-one { left: 25%; top: 32%; }.particle-two { right: 25%; top: 48%; animation-delay: -2s; }.particle-three { left: 35%; bottom: 18%; animation-delay: -4s; }
+@keyframes scent-wave { 0%,100% { transform: scale(.9); opacity: .2; } 50% { transform: scale(1.08); opacity: .6; } }
+@keyframes scent-float { 50% { transform: translate(25px,-35px) scale(1.8); opacity: .9; } }
 
 .hero-content {
   position: relative;
@@ -786,6 +798,9 @@ footer {
   color: var(--papaya-whip);
   overflow: hidden;
 }
+.cta-box, .add-button, .checkout-button, .whatsapp-popup a { position: relative; overflow: hidden; }
+.cta-box::after, .add-button::after, .checkout-button::after, .whatsapp-popup a::after { content: ""; position: absolute; inset: 0; transform: translateX(-120%) skewX(-20deg); background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); transition: transform .6s ease; }
+.cta-box:hover::after, .add-button:hover::after, .checkout-button:hover::after, .whatsapp-popup a:hover::after { transform: translateX(120%) skewX(-20deg); }
 
 .collection-copy { max-width: 520px; }
 .collection-section .main-heading { color: var(--gold); }

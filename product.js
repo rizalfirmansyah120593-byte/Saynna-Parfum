@@ -5,6 +5,11 @@ if (whatsappWidget) {
   whatsappWidget.querySelector(".floating-whatsapp").addEventListener("click", () => whatsappWidget.classList.toggle("is-open"));
   whatsappWidget.querySelector(".whatsapp-close").addEventListener("click", () => whatsappWidget.classList.remove("is-open"));
 }
+const progress = document.querySelector(".scroll-progress");
+const updateProgress = () => { if (progress) progress.style.width = `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`; };
+window.addEventListener("scroll", updateProgress, { passive: true }); updateProgress();
+window.addEventListener("pointermove", event => { document.body.style.setProperty("--pointer-x", `${event.clientX}px`); document.body.style.setProperty("--pointer-y", `${event.clientY}px`); });
+document.querySelectorAll("a[href$='.html'], a[href^='index.html']").forEach(link => link.addEventListener("click", event => { const url = link.href; if (!url.includes("#") && new URL(url).origin === location.origin) { event.preventDefault(); const curtain = document.querySelector(".page-transition"); gsap.to(curtain, { scaleY: 1, duration: .35, ease: "power2.in", onComplete: () => location.href = url }); } }));
 const formatPrice = value => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
 const extraProducts = [
   ["Saynna Noir", 60000, "woody", "image.png", "Woody amber yang misterius untuk malam yang berkarakter."],
@@ -59,4 +64,6 @@ document.querySelectorAll(".product-card").forEach(card => {
   card.style.opacity = "1";
   card.style.visibility = "visible";
 });
+document.querySelectorAll(".product-card").forEach(card => card.addEventListener("pointermove", event => { const box = card.getBoundingClientRect(); const x = ((event.clientX - box.left) / box.width - .5) * 6; const y = ((event.clientY - box.top) / box.height - .5) * -6; card.style.transform = `perspective(700px) rotateX(${y}deg) rotateY(${x}deg) translateY(-8px)`; }));
+document.querySelectorAll(".product-card").forEach(card => card.addEventListener("pointerleave", () => { card.style.transform = ""; }));
 renderCart();
