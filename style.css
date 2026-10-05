@@ -321,6 +321,28 @@ footer {
   .footer-bottom { flex-direction: column; margin-top: 2rem; }
 }
 
+/* Mobile readability and touch targets */
+@media (max-width: 768px) {
+  header { position: sticky; top: 0; z-index: 9999; }
+  .header-inner { min-height: 70px; padding: .5rem 1rem; }
+  .logo { min-width: 52px; }
+  .desktop-nav { display: none !important; }
+  .hamburger { display: flex !important; width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: .5rem; z-index: 2; }
+  .hamburger div { width: 24px; height: 2px; background: #ffffff; }
+  .mobile-nav { position: absolute; left: 0; right: 0; z-index: 9998; border-bottom: 1px solid var(--sienna); box-shadow: 0 12px 24px #0009; }
+  .mobile-nav a { min-height: 44px; display: flex; align-items: center; color: #ffffff; }
+  .mobile-nav a:hover, .mobile-nav a:focus { color: var(--sienna); }
+  .hero { min-height: 34rem; padding: 1.5rem 1rem; }
+  .hero-content h1 { font-size: clamp(4.5rem, 18vw, 7rem); }
+  .hero-subtitle { line-height: 1.6; letter-spacing: 1px; }
+  .hero-proof { font-size: .78rem; }
+  .section-intro { padding: 2.5rem 1.25rem; }
+  .description, .ingredient-text p, .timeline-description { color: #f4ead7; }
+  .cta-box, .whatsapp-box, .checkout-button, .add-button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .product-facts { gap: .75rem; }
+  .footer-links a, .footer-contact a { min-height: 40px; display: flex; align-items: center; }
+}
+
 /* === Responsive Header Behavior === */
 @media (max-width: 768px) {
   nav {
