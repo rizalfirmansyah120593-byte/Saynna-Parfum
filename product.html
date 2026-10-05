@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Parfum Saynna | Belanja via WhatsApp</title>
+  <meta name="description" content="Belanja koleksi parfum Saynna langsung melalui website dan checkout otomatis via WhatsApp.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+<body class="catalog-page">
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Saynna Parfum - Beranda">
+        <img src="./logo.png" alt="" class="header-mark"><span>Saynna Parfum</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html">Beranda</a>
+        <a href="product.html" aria-current="page">Katalog</a>
+        <a href="index.html#notes">Notes</a>
+        <a href="index.html#contact">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="catalog-main">
+    <section class="catalog-hero">
+      <p class="eyebrow">SAYNNA PARFUM • SIGNATURE COLLECTION</p>
+      <h1>Choose your<br><em>signature.</em></h1>
+      <p>Temukan aroma yang meninggalkan kesan. Pilih produk, tentukan jumlah, lalu kirim pesanan langsung ke WhatsApp.</p>
+    </section>
+
+    <section class="catalog-layout" aria-label="Katalog produk">
+      <div class="product-grid">
+        <article class="product-card" data-name="Note Baccarat 540" data-price="349000">
+          <div class="product-visual product-visual-main"><img src="image.png" alt="Saynna Note Baccarat 540"></div>
+          <div class="product-info">
+            <p class="product-type">EXTRAIT DE PARFUM • 50 ML</p>
+            <h2>Note Baccarat 540</h2>
+            <p>Amber floral yang hangat dengan saffron, jasmine, amberwood, fir resin, dan cedar.</p>
+            <div class="product-buy"><strong>Rp349.000</strong><button class="add-button" type="button">Tambah</button></div>
+          </div>
+        </article>
+
+        <article class="product-card" data-name="Saynna Discovery Set" data-price="149000">
+          <div class="product-visual product-visual-set"><img src="detail-1.jpeg" alt="Saynna Discovery Set"></div>
+          <div class="product-info">
+            <p class="product-type">DISCOVERY SET • 3 X 10 ML</p>
+            <h2>Saynna Discovery Set</h2>
+            <p>Tiga perjalanan aroma Saynna dalam ukuran praktis untuk menemukan signature scent-mu.</p>
+            <div class="product-buy"><strong>Rp149.000</strong><button class="add-button" type="button">Tambah</button></div>
+          </div>
+        </article>
+
+        <article class="product-card" data-name="Saynna Parfum Gift Edition" data-price="429000">
+          <div class="product-visual product-visual-gift"><img src="detail-2.jpeg" alt="Saynna Parfum Gift Edition"></div>
+          <div class="product-info">
+            <p class="product-type">GIFT EDITION • 50 ML</p>
+            <h2>Gift Edition</h2>
+            <p>Botol signature dengan kemasan elegan, cocok untuk hadiah di momen yang tak terlupakan.</p>
+            <div class="product-buy"><strong>Rp429.000</strong><button class="add-button" type="button">Tambah</button></div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="order-panel" aria-live="polite">
+        <p class="eyebrow">YOUR ORDER</p>
+        <h2>Pesananmu</h2>
+        <div id="orderItems"><p class="empty-order">Belum ada produk. Pilih parfum untuk mulai berbelanja.</p></div>
+        <div class="order-total"><span>Total</span><strong id="orderTotal">Rp0</strong></div>
+        <label for="customerName">Nama</label>
+        <input id="customerName" type="text" placeholder="Nama lengkap">
+        <label for="customerAddress">Alamat pengiriman</label>
+        <textarea id="customerAddress" rows="3" placeholder="Alamat lengkap"></textarea>
+        <button class="checkout-button" id="checkoutButton" type="button">Checkout via WhatsApp</button>
+        <small class="order-note">Pesanan akan dibuka di WhatsApp untuk dikonfirmasi sebelum pembayaran.</small>
+      </aside>
+    </section>
+  </main>
+
+  <footer><div class="footer-bottom"><span>© 2026 Saynna Parfum</span><a href="index.html">Kembali ke halaman utama</a></div></footer>
+  <script src="product.js"></script>
+</body>
+</html>
