@@ -14,6 +14,7 @@
   <meta property="og:image" content="image.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="preload" as="image" href="image.png" fetchpriority="high" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="index.html" />
   <script type="application/ld+json">
@@ -81,12 +82,13 @@
 
     <!-- Hero Bottle Overlay Wrapper -->
     <div class="hero-bottle-wrapper">
-      <img src="./image.png" alt="Botol Saynna Parfum Note Baccarat 540"
+      <img src="./image.png" alt="Botol Saynna Parfum Note Baccarat 540" fetchpriority="high" decoding="async"
         class="hero-bottle" />
     </div>
 
     <!-- Hero Section -->
     <section class="hero vintage-hero" id="home">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="product-14.jpeg" aria-hidden="true"><source src="video-1.mp4" type="video/mp4"></video>
       <span class="scent-particle particle-one"></span><span class="scent-particle particle-two"></span><span class="scent-particle particle-three"></span>
       <div class="hero-content">
         <!-- Decorative Stamp -->
@@ -185,7 +187,7 @@
         <!-- Left Column: Date + Image -->
         <div class="timeline-left">
           <div class="timeline-date">01</div>
-          <img src="./product-14.jpeg" alt="Saynna Note Baccarat 540 dan aroma ingredients"
+          <img src="./product-14.jpeg" alt="Saynna Note Baccarat 540 dan aroma ingredients" loading="lazy" decoding="async"
             class="timeline-img" />
         </div>
 
@@ -202,7 +204,7 @@
       <div class="timeline-entry">
         <div class="timeline-left">
           <div class="timeline-date">02</div>
-          <img src="./product-1.jpeg" alt="Saynna Sweet Lovely dengan aroma floral fruity"
+          <img src="./product-1.jpeg" alt="Saynna Sweet Lovely dengan aroma floral fruity" loading="lazy" decoding="async"
             class="timeline-img" />
         </div>
 
@@ -255,7 +257,16 @@
       <a href="mailto:hello@saynnaparfum.com?subject=Order%20Note%20Baccarat%20540" class="cta-box">Pesan sekarang</a>
       <a href="https://wa.me/6282298988772?text=Halo%20Saynna%2C%20saya%20tertarik%20dengan%20parfum%20Saynna." class="whatsapp-box" target="_blank" rel="noopener">Pesan via WhatsApp</a>
     </div>
-    <img src="./product-14.jpeg" alt="Koleksi Saynna Parfum Note Baccarat 540" class="collection-image">
+    <img src="./product-14.jpeg" alt="Koleksi Saynna Parfum Note Baccarat 540" class="collection-image" loading="lazy" decoding="async">
+  </section>
+
+  <section class="video-showcase" aria-labelledby="video-title">
+    <div class="video-showcase-heading"><p class="small-title">The scent in motion</p><h2 id="video-title">A fragrance<br>you can feel.</h2></div>
+    <div class="video-grid">
+      <article class="video-card"><video muted loop playsinline preload="metadata" poster="product-1.jpeg"><source src="video-2.mp4" type="video/mp4"></video><div><span>01</span><strong>Sweet Lovely</strong></div></article>
+      <article class="video-card"><video muted loop playsinline preload="metadata" poster="product-8.jpeg"><source src="video3.mp4" type="video/mp4"></video><div><span>02</span><strong>Dark Rebel</strong></div></article>
+      <article class="video-card"><video muted loop playsinline preload="metadata" poster="product-14.jpeg"><source src="video-5.mp4" type="video/mp4"></video><div><span>03</span><strong>Note Baccarat 540</strong></div></article>
+    </div>
   </section>
 
   <section class="testimonials-section" aria-labelledby="testimonials-title">
@@ -302,14 +313,14 @@
   <!-- ================== JAVASCRIPT ================== -->
   <!-- GSAP Core Library -->
   <script
-    src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 
   <!-- GSAP ScrollTrigger Plugin -->
   <script
-    src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 
   <!-- Custom Main Script -->
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 
 </body>
 

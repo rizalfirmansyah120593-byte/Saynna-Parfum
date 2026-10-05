@@ -58,7 +58,7 @@
         <div class="catalog-toolbar"><div class="filter-list"><button class="filter-button active" data-filter="all">Semua</button><button class="filter-button" data-filter="floral">Floral</button><button class="filter-button" data-filter="woody">Woody</button><button class="filter-button" data-filter="fresh">Fresh</button><button class="filter-button" data-filter="unisex">Unisex</button></div><span class="stock-note">● Ready to ship</span></div>
       <div class="product-grid">
         <article class="product-card" data-name="Sweet Lovely" data-price="60000" data-category="floral unisex">
-          <div class="product-visual product-visual-main"><img src="product-1.jpeg" alt="Saynna Sweet Lovely parfum"></div>
+          <div class="product-visual product-visual-main"><img src="product-1.jpeg" alt="Saynna Sweet Lovely parfum" loading="lazy" decoding="async"></div>
           <div class="product-info">
             <p class="product-type">EXTRAIT DE PARFUM • 50 ML</p>
             <h2>Sweet Lovely</h2>
@@ -68,7 +68,7 @@
         </article>
 
         <article class="product-card" data-name="Charming Touch" data-price="60000" data-category="floral fresh">
-          <div class="product-visual product-visual-set"><img src="product-2.jpeg" alt="Saynna Charming Touch parfum"></div>
+          <div class="product-visual product-visual-set"><img src="product-2.jpeg" alt="Saynna Charming Touch parfum" loading="lazy" decoding="async"></div>
           <div class="product-info">
             <p class="product-type">DISCOVERY SET • 3 X 10 ML</p>
             <h2>Charming Touch</h2>
@@ -78,7 +78,7 @@
         </article>
 
         <article class="product-card" data-name="Velocity For Men" data-price="60000" data-category="woody unisex">
-          <div class="product-visual product-visual-gift"><img src="product-3.jpeg" alt="Saynna Velocity For Men parfum"></div>
+          <div class="product-visual product-visual-gift"><img src="product-3.jpeg" alt="Saynna Velocity For Men parfum" loading="lazy" decoding="async"></div>
           <div class="product-info">
             <p class="product-type">GIFT EDITION • 50 ML</p>
             <h2>Velocity For Men</h2>
@@ -123,6 +123,15 @@
   <div class="quick-modal" id="quickModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" type="button">×</button><img id="modalImage" src="image.png" alt="Detail parfum"><div><p class="eyebrow">SCENT PROFILE</p><h2 id="modalTitle">Saynna Parfum</h2><p id="modalDescription"></p><div class="note-bars"><span><b>Top</b><i></i></span><span><b>Heart</b><i></i></span><span><b>Base</b><i></i></span></div><button class="checkout-button modal-add" type="button">Tambah ke keranjang</button></div></div></div>
   <div class="whatsapp-widget"><button class="floating-whatsapp" type="button" aria-label="Buka WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.7 6L0 24l6.3-2a11.8 11.8 0 0 0 5.8 1.5h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.2ZM12.1 21.5c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1.2 1.2-3.6-.2-.4a9.7 9.7 0 1 1 8.1 4.4Zm5.3-7.3c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.8 4.2 2.8 1.1 2.8.7 3.3.7.5 0 1.7-.7 1.9-1.3.3-.6.3-1.2.2-1.3-.1-.2-.3-.3-.6-.4Z"/></svg><span>Chat WhatsApp</span></button><div class="whatsapp-popup"><button class="whatsapp-close" type="button" aria-label="Tutup">×</button><strong>Butuh bantuan memilih aroma?</strong><p>Tim Saynna siap membantu menemukan produk yang tepat untukmu.</p><a href="https://wa.me/6282298988772?text=Halo%20Saynna%2C%20saya%20ingin%20bertanya%20tentang%20produk." target="_blank" rel="noopener">Mulai chat WhatsApp</a></div></div>
 
+  <section class="video-showcase" aria-labelledby="video-title">
+    <div class="video-showcase-heading"><p class="small-title">The scent in motion</p><h2 id="video-title">Meet the<br>collection.</h2></div>
+    <div class="video-grid">
+      <article class="video-card"><video muted loop playsinline preload="metadata" poster="product-1.jpeg"><source src="video-2.mp4" type="video/mp4"></video><div><span>01</span><strong>Sweet Lovely</strong></div></article>
+      <article class="video-card"><video muted loop playsinline preload="metadata" poster="product-8.jpeg"><source src="video3.mp4" type="video/mp4"></video><div><span>02</span><strong>Dark Rebel</strong></div></article>
+      <article class="video-card"><video muted loop playsinline preload="metadata" poster="product-14.jpeg"><source src="video-5.mp4" type="video/mp4"></video><div><span>03</span><strong>Note Baccarat 540</strong></div></article>
+    </div>
+  </section>
+
   <section class="testimonials-section" aria-labelledby="testimonials-title">
     <div class="testimonials-heading"><p class="small-title">Saynna circle</p><h2 id="testimonials-title">Loved by those<br>who leave a trace.</h2></div>
     <div class="testimonial-marquee marquee-forward"><div class="testimonial-track">
@@ -157,6 +166,6 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script src="product.js"></script>
+  <script src="product.js" defer></script>
 </body>
 </html>

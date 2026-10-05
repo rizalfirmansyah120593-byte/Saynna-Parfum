@@ -336,6 +336,15 @@ footer {
 .whatsapp-popup a { display: block; padding: .7rem; background: #b7d7a8; color: #172016; text-align: center; text-decoration: none; font-weight: 700; font-size: .8rem; }
 .whatsapp-close { position: absolute; top: .35rem; right: .5rem; border: 0; background: none; color: #fff; font-size: 1.3rem; cursor: pointer; }
 .testimonials-heading { max-width: 1280px; margin: 0 auto 2rem; padding: 0 2rem; }
+.video-showcase { padding: 5rem 2rem; background: #191311; border-top: 1px solid #4b382a; overflow: hidden; }
+.video-showcase-heading { max-width: 1280px; margin: 0 auto 2rem; }
+.video-showcase-heading h2 { margin-top: .6rem; color: #fff; font: 400 clamp(2.5rem, 5vw, 4.5rem)/.9 "Veneer", serif; text-transform: uppercase; }
+.video-grid { max-width: 1280px; margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.video-card { position: relative; min-height: 330px; overflow: hidden; border: 1px solid #55402e; background: #0f0c0b; }
+.video-card video { width: 100%; height: 100%; min-height: 330px; display: block; object-fit: cover; opacity: .75; transition: transform .6s ease, opacity .4s ease; }
+.video-card:hover video { transform: scale(1.05); opacity: 1; }
+.video-card > div { position: absolute; inset: auto 1rem 1rem; display: flex; justify-content: space-between; align-items: center; color: #fff; text-shadow: 0 2px 8px #000; }
+.video-card span { color: var(--sienna); font-weight: 700; }.video-card strong { font-size: 1rem; }
 .testimonials-heading h2 { margin-top: .6rem; color: #fff; font: 400 clamp(2.5rem, 5vw, 4.5rem)/.9 "Veneer", serif; text-transform: uppercase; }
 .testimonial-marquee { overflow: hidden; width: 100%; margin: 1rem 0; }
 .testimonial-track { display: flex !important; flex-direction: row; align-items: stretch; width: max-content; gap: 1rem; will-change: transform; }
@@ -363,6 +372,9 @@ footer {
   .testimonials-section { padding: 3.5rem 0 2.5rem; }
   .testimonials-heading { padding: 0 1.25rem; }
   .testimonial-marquee blockquote { flex-basis: 230px; width: 230px; min-height: 100px; font-size: .76rem; }
+  .video-showcase { padding: 3.5rem 1.25rem; }
+  .video-grid { grid-template-columns: 1fr; gap: .85rem; }
+  .video-card, .video-card video { min-height: 260px; }
 }
 
 /* Mobile readability and touch targets */
@@ -417,6 +429,7 @@ footer {
   background: radial-gradient(circle at 50% 35%, #3a2921 0%, var(--papaya-whip) 58%, #0d0a09 100%);
 }
 .hero::before, .hero::after { content: ""; position: absolute; border: 1px solid rgba(214,166,77,.22); border-radius: 50%; pointer-events: none; }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .14; filter: saturate(.65) contrast(1.15); pointer-events: none; }
 .hero::before { width: 32rem; height: 32rem; animation: scent-wave 8s ease-in-out infinite; }
 .hero::after { width: 48rem; height: 48rem; animation: scent-wave 11s ease-in-out infinite reverse; }
 .scent-particle { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #d6a64d; box-shadow: 0 0 18px #d6a64d; opacity: .5; animation: scent-float 7s ease-in-out infinite; z-index: 2; }

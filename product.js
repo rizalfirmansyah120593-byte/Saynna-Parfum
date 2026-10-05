@@ -15,6 +15,8 @@ const progress = document.querySelector(".scroll-progress");
 const updateProgress = () => { if (progress) progress.style.width = `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`; };
 window.addEventListener("scroll", updateProgress, { passive: true }); updateProgress();
 window.addEventListener("pointermove", event => { document.body.style.setProperty("--pointer-x", `${event.clientX}px`); document.body.style.setProperty("--pointer-y", `${event.clientY}px`); });
+const videoObserver = new IntersectionObserver(entries => entries.forEach(entry => { const video = entry.target; if (entry.isIntersecting) video.play().catch(() => {}); else video.pause(); }), { threshold: .2 });
+document.querySelectorAll(".video-card video").forEach(video => videoObserver.observe(video));
 document.querySelectorAll("a[href$='.html'], a[href^='index.html']").forEach(link => link.addEventListener("click", event => { const url = link.href; if (!url.includes("#") && new URL(url).origin === location.origin) { event.preventDefault(); const curtain = document.querySelector(".page-transition"); gsap.to(curtain, { scaleY: 1, duration: .35, ease: "power2.in", onComplete: () => location.href = url }); } }));
 const formatPrice = value => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
 const extraProducts = [
@@ -43,7 +45,7 @@ function createProductCard([name, price, category, image, description]) {
   const card = document.createElement("article");
   card.className = "product-card reveal-card";
   card.dataset.name = name; card.dataset.price = price; card.dataset.category = category; card.dataset.description = description; card.dataset.image = image;
-  card.innerHTML = `<div class="product-visual product-visual-main"><img src="${image}" alt="${name} Saynna Parfum"></div><div class="product-info"><p class="product-type">SIGNATURE COLLECTION</p><h2>${name}</h2><p>${description}</p><div class="product-buy"><strong>${formatPrice(price)}</strong><div><button class="quick-button" type="button">Detail</button><button class="add-button" type="button">Tambah</button></div></div></div>`;
+  card.innerHTML = `<div class="product-visual product-visual-main"><img src="${image}" alt="${name} Saynna Parfum" loading="lazy" decoding="async"></div><div class="product-info"><p class="product-type">SIGNATURE COLLECTION</p><h2>${name}</h2><p>${description}</p><div class="product-buy"><strong>${formatPrice(price)}</strong><div><button class="quick-button" type="button">Detail</button><button class="add-button" type="button">Tambah</button></div></div></div>`;
   document.querySelector(".product-grid").appendChild(card);
 }
 extraProducts.forEach(createProductCard);

@@ -32,6 +32,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const updateProgress = () => { if (progress) progress.style.width = `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`; };
   window.addEventListener("scroll", updateProgress, { passive: true }); updateProgress();
   window.addEventListener("pointermove", event => { document.body.style.setProperty("--pointer-x", `${event.clientX}px`); document.body.style.setProperty("--pointer-y", `${event.clientY}px`); });
+  const videoObserver = new IntersectionObserver(entries => entries.forEach(entry => { const video = entry.target; if (entry.isIntersecting) video.play().catch(() => {}); else video.pause(); }), { threshold: .2 });
+  document.querySelectorAll(".video-card video").forEach(video => videoObserver.observe(video));
   document.querySelectorAll("a[href$='.html'], a[href^='index.html']").forEach(link => link.addEventListener("click", event => { const url = link.href; if (!url.includes("#") && new URL(url).origin === location.origin) { event.preventDefault(); const curtain = document.querySelector(".page-transition"); gsap.to(curtain, { scaleY: 1, duration: .35, ease: "power2.in", onComplete: () => location.href = url }); } }));
   gsap.utils.toArray(".timeline-img, .collection-image").forEach(image => gsap.to(image, { yPercent: -8, ease: "none", scrollTrigger: { trigger: image, start: "top bottom", end: "bottom top", scrub: true } }));
 
