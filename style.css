@@ -313,12 +313,33 @@ footer {
   font-size: .75rem;
 }
 
+.testimonials-section {
+  overflow: hidden;
+  padding: 5rem 0 4rem;
+  background: #100c0b;
+  border-top: 1px solid #4b382a;
+}
+.testimonials-heading { max-width: 1280px; margin: 0 auto 2rem; padding: 0 2rem; }
+.testimonials-heading h2 { margin-top: .6rem; color: #fff; font: 400 clamp(2.5rem, 5vw, 4.5rem)/.9 "Veneer", serif; text-transform: uppercase; }
+.testimonial-marquee { overflow: hidden; width: 100%; margin: 1rem 0; }
+.testimonial-track { display: flex; width: max-content; gap: 1rem; }
+.testimonial-marquee blockquote { width: 270px; min-height: 92px; margin: 0; padding: 1.1rem; border: 1px solid #4c392a; background: #201713; color: #f4ead7; font-size: .82rem; line-height: 1.5; }
+.testimonial-marquee cite { display: block; margin-top: .7rem; color: var(--sienna); font-size: .7rem; font-style: normal; letter-spacing: .04em; }
+.marquee-forward .testimonial-track { animation: testimonial-forward 75s linear infinite; }
+.marquee-reverse .testimonial-track { animation: testimonial-reverse 75s linear infinite; }
+.testimonial-marquee:hover .testimonial-track { animation-play-state: paused; }
+@keyframes testimonial-forward { from { transform: translateX(-42%); } to { transform: translateX(0); } }
+@keyframes testimonial-reverse { from { transform: translateX(0); } to { transform: translateX(-42%); } }
+
 @media (max-width: 768px) {
   .hero-bottle-wrapper { height: 19rem; }
   footer { padding: 2.5rem 1.25rem 1rem; }
   .footer-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1.75rem; }
   .footer-brand { align-items: center; }
   .footer-bottom { flex-direction: column; margin-top: 2rem; }
+  .testimonials-section { padding: 3.5rem 0 2.5rem; }
+  .testimonials-heading { padding: 0 1.25rem; }
+  .testimonial-marquee blockquote { width: 230px; min-height: 100px; font-size: .76rem; }
 }
 
 /* Mobile readability and touch targets */
