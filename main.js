@@ -253,6 +253,21 @@ window.addEventListener("DOMContentLoaded", () => {
             scrub: 1,
           },
         });
+
+        [".section-intro", ".timeline-entry", ".collection-section", ".testimonials-section"].forEach((section) => {
+          gsap.from(section, {
+            y: 45,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 88%",
+              end: "top 55%",
+              scrub: 0.7,
+            },
+          });
+        });
       },
     });
   }

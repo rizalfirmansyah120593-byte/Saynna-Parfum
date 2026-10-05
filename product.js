@@ -11,6 +11,14 @@ const extraProducts = [
   ["Velvet Saffron", 60000, "floral", "image.png", "Saffron spicy dan amberwood dalam komposisi yang sensual."]
 ];
 
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".catalog-hero", { y: 35, opacity: 0, duration: .9, ease: "power2.out" });
+  gsap.from(".catalog-toolbar", { y: 25, opacity: 0, duration: .7, delay: .15, ease: "power2.out" });
+  gsap.from(".order-panel", { x: 30, opacity: 0, duration: .8, delay: .25, ease: "power2.out" });
+  gsap.from(".testimonials-section", { y: 40, opacity: 0, duration: .8, scrollTrigger: { trigger: ".testimonials-section", start: "top 88%", end: "top 58%", scrub: .7 } });
+}
+
 function createProductCard([name, price, category, image, description]) {
   const card = document.createElement("article");
   card.className = "product-card reveal-card";
@@ -36,4 +44,10 @@ document.querySelectorAll(".filter-button").forEach(button => button.addEventLis
 document.querySelector(".modal-close").addEventListener("click", closeModal); document.querySelector("#quickModal").addEventListener("click", event => { if (event.target.id === "quickModal") closeModal(); });
 document.querySelector("#checkoutButton").addEventListener("click", () => { if (!cart.length) return alert("Silakan pilih produk terlebih dahulu."); const name = document.querySelector("#customerName").value.trim() || "Belum diisi"; const address = document.querySelector("#customerAddress").value.trim() || "Belum diisi"; const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); const items = cart.map(item => `- ${item.name} x${item.quantity} (${formatPrice(item.price * item.quantity)})`).join("%0A"); const message = `Halo Saynna Parfum, saya ingin memesan:%0A%0A${items}%0A%0ATotal: ${formatPrice(total)}%0ANama: ${encodeURIComponent(name)}%0AAlamat: ${encodeURIComponent(address)}`; window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank", "noopener"); });
 const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: .12 }); document.querySelectorAll(".reveal-card").forEach(card => observer.observe(card));
+if (window.gsap && window.ScrollTrigger && window.matchMedia("(max-width: 768px)").matches) {
+  gsap.utils.toArray(".product-card").forEach((card, index) => {
+    gsap.from(card, { y: 35, opacity: 0, duration: .65, delay: index * .04, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 92%", end: "top 68%", scrub: .65 } });
+  });
+  ScrollTrigger.refresh();
+}
 renderCart();
